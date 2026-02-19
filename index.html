@@ -9,42 +9,74 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#f6f2ee;color:#333}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;background:white;box-shadow:0 4px 15px rgba(0,0,0,0.05);position:sticky;top:0;z-index:100}
+body{font-family:'Poppins',sans-serif;background:#f5f1ec;color:#333}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;background:white;box-shadow:0 4px 15px rgba(0,0,0,.05);position:sticky;top:0;z-index:100}
 .logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:600}
 nav a{text-decoration:none;color:#333;margin-left:20px;font-size:14px}
 nav a:hover{color:#b46e5a}
 
-.hero{height:75vh;background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),url('https://images.unsplash.com/photo-1512820790803-83ca734da794');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:20px}
-.hero h1{font-family:'Playfair Display',serif;font-size:46px;margin-bottom:15px}
-.hero p{margin-bottom:20px}
-
-.search-bar{margin:30px auto;text-align:center}
-.search-bar input{padding:12px;width:280px;border-radius:30px;border:1px solid #ddd}
+.hero{height:70vh;background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),url('https://images.unsplash.com/photo-1512820790803-83ca734da794');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:20px}
+.hero h1{font-family:'Playfair Display',serif;font-size:42px;margin-bottom:15px}
+.hero p{font-size:18px}
 
 .section{padding:60px 8%;text-align:center}
-.section h2{font-family:'Playfair Display',serif;margin-bottom:40px}
+.section h2{font-family:'Playfair Display',serif;margin-bottom:30px}
 
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
+.filter-buttons{margin-bottom:30px}
+.filter-buttons button{
+background:white;
+border:1px solid #ddd;
+padding:8px 16px;
+margin:5px;
+border-radius:20px;
+cursor:pointer;
+font-size:13px;
+transition:.3s;
+}
+.filter-buttons button:hover,
+.filter-buttons button.active{
+background:#b46e5a;
+color:white;
+border-color:#b46e5a;
+}
 
-.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.08);position:relative;transition:.3s}
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+}
 .card:hover{transform:translateY(-6px)}
 .card img{width:100%;height:280px;object-fit:cover}
 .card-content{padding:15px}
-.card-content h3{font-size:15px;margin-bottom:8px}
+.card-content h3{font-size:14px;margin-bottom:10px}
 
-.btn{background:#b46e5a;color:white;padding:8px 18px;border:none;border-radius:20px;cursor:pointer;font-size:13px}
+.btn{
+background:#b46e5a;
+color:white;
+padding:6px 14px;
+border:none;
+border-radius:20px;
+font-size:12px;
+cursor:pointer;
+}
 
-.wishlist{position:absolute;top:10px;right:10px;font-size:20px;cursor:pointer}
-.wishlist.active{color:red}
-
-.blog{background:#111;color:white}
-.blog article{max-width:700px;margin:20px auto;text-align:left}
-.blog h3{margin-bottom:10px}
-
-footer{padding:30px;text-align:center;background:white;font-size:13px;margin-top:40px}
-.disclosure{font-size:12px;color:#777;margin-top:10px}
-footer a{color:#b46e5a;text-decoration:none}
+footer{
+padding:30px;
+text-align:center;
+background:white;
+margin-top:40px;
+font-size:13px;
+}
+.disclosure{font-size:12px;color:#777;margin-top:8px}
 </style>
 </head>
 
@@ -54,7 +86,6 @@ footer a{color:#b46e5a;text-decoration:none}
 <div class="logo">She Reads</div>
 <nav>
 <a href="#books">Books</a>
-<a href="#blog">Blog</a>
 <a href="privacy.html">Privacy</a>
 </nav>
 </header>
@@ -62,78 +93,76 @@ footer a{color:#b46e5a;text-decoration:none}
 <section class="hero">
 <div>
 <h1>Curated Worlds for Soft Souls & Dark Hearts</h1>
-<p>Romance • Fantasy • Dark Reads • Cozy Picks</p>
+<p>Romance • Fantasy • Dark Reads • BookTok Favorites</p>
 </div>
 </section>
-
-<div class="search-bar">
-<input type="text" id="searchInput" placeholder="Search books...">
-</div>
 
 <section class="section" id="books">
-<h2>Featured Reads</h2>
-<div class="products" id="productList">
+<h2>Explore Books</h2>
 
-<div class="card" data-name="Sarah J Maas A Court of Thorns and Roses">
-<div class="wishlist" onclick="toggleWishlist(this)">♡</div>
-<a href="https://amzn.to/4arYr8H" target="_blank">
-<img src="https://images-na.ssl-images-amazon.com/images/I/81HhlC7QydL.jpg">
+<div class="filter-buttons">
+<button class="active" onclick="filterBooks('all')">All</button>
+<button onclick="filterBooks('dark')">Dark Romance</button>
+<button onclick="filterBooks('fantasy')">Fantasy</button>
+<button onclick="filterBooks('reverse')">Reverse Harem</button>
+<button onclick="filterBooks('literary')">Literary</button>
+</div>
+
+<div class="products">
+
+<!-- Dark Romance Example -->
+<div class="card" data-category="dark">
+<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
 <div class="card-content">
-<h3>ACOTAR Box Set</h3>
-<button class="btn">Shop on Amazon</button>
+<h3>Corrupt — Penelope Douglas</h3>
+<button class="btn">Affiliate Link</button>
 </div>
-</a>
 </div>
 
-<div class="card" data-name="Rina Kent Collection">
-<div class="wishlist" onclick="toggleWishlist(this)">♡</div>
-<a href="https://amzn.to/4s2gpV3" target="_blank">
-<img src="https://images-na.ssl-images-amazon.com/images/I/71+eYIa3cdL.jpg">
+<div class="card" data-category="dark">
+<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
 <div class="card-content">
-<h3>Rina Kent Collection</h3>
-<button class="btn">Shop on Amazon</button>
+<h3>God of Malice — Rina Kent</h3>
+<button class="btn">Affiliate Link</button>
 </div>
-</a>
 </div>
 
-<div class="card" data-name="Empyrean Series Fourth Wing">
-<div class="wishlist" onclick="toggleWishlist(this)">♡</div>
-<a href="https://amzn.to/4s5J3op" target="_blank">
-<img src="https://images-na.ssl-images-amazon.com/images/I/71OiQ+JHSYL.jpg">
+<!-- Fantasy Example -->
+<div class="card" data-category="fantasy">
+<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba">
 <div class="card-content">
-<h3>The Empyrean Series</h3>
-<button class="btn">Shop on Amazon</button>
+<h3>ACOTAR — Sarah J. Maas</h3>
+<button class="btn">Affiliate Link</button>
 </div>
-</a>
 </div>
 
-<div class="card" data-name="Lies of My Monster Special Edition">
-<div class="wishlist" onclick="toggleWishlist(this)">♡</div>
-<a href="https://amzn.to/4c4jOy0" target="_blank">
-<img src="https://images-na.ssl-images-amazon.com/images/I/81A-mvlo+QL.jpg">
+<div class="card" data-category="fantasy">
+<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba">
 <div class="card-content">
-<h3>Lies of My Monster</h3>
-<button class="btn">Shop on Amazon</button>
+<h3>Fourth Wing — Rebecca Yarros</h3>
+<button class="btn">Affiliate Link</button>
 </div>
-</a>
+</div>
+
+<!-- Reverse Harem -->
+<div class="card" data-category="reverse">
+<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
+<div class="card-content">
+<h3>Zodiac Academy</h3>
+<button class="btn">Affiliate Link</button>
+</div>
+</div>
+
+<!-- Literary -->
+<div class="card" data-category="literary">
+<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+<div class="card-content">
+<h3>If Tomorrow Comes — Sidney Sheldon</h3>
+<button class="btn">Affiliate Link</button>
+</div>
 </div>
 
 </div>
-</section>
-
-<section class="section blog" id="blog">
-<h2>From The Blog</h2>
-
-<article>
-<h3>Best Dark Romance Books You Need to Read</h3>
-<p>Explore intense, morally grey love stories that stay with you long after the last page.</p>
-</article>
-
-<article>
-<h3>Fantasy Series That Feel Like Escaping Reality</h3>
-<p>Dragons, courts, magic, and epic tension — here are must-read fantasy worlds.</p>
-</article>
-
 </section>
 
 <footer>
@@ -141,25 +170,24 @@ footer a{color:#b46e5a;text-decoration:none}
 <div class="disclosure">
 As an Amazon Associate, I earn from qualifying purchases.
 </div>
-<br>
-<a href="privacy.html">Privacy Policy</a>
 </footer>
 
 <script>
-function toggleWishlist(el){
-el.classList.toggle("active");
-el.innerHTML = el.classList.contains("active") ? "❤" : "♡";
-}
+function filterBooks(category){
+let cards=document.querySelectorAll(".card");
+let buttons=document.querySelectorAll(".filter-buttons button");
 
-document.getElementById("searchInput").addEventListener("keyup", function(){
-let filter = this.value.toLowerCase();
-let cards = document.querySelectorAll(".card");
+buttons.forEach(btn=>btn.classList.remove("active"));
+event.target.classList.add("active");
 
 cards.forEach(card=>{
-let name = card.getAttribute("data-name").toLowerCase();
-card.style.display = name.includes(filter) ? "block" : "none";
+if(category==="all"){
+card.style.display="block";
+}else{
+card.style.display=card.dataset.category===category?"block":"none";
+}
 });
-});
+}
 </script>
 
 </body>
