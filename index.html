@@ -9,21 +9,69 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:#f5f1ec;color:#333}
+body{font-family:'Poppins',sans-serif;background:#f4efe9;color:#333}
 
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;background:white;box-shadow:0 4px 15px rgba(0,0,0,.05);position:sticky;top:0;z-index:100}
-.logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:600}
-nav a{text-decoration:none;color:#333;margin-left:20px;font-size:14px}
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:white;
+box-shadow:0 4px 15px rgba(0,0,0,.05);
+position:sticky;
+top:0;
+z-index:100
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:26px;
+font-weight:600
+}
+
+nav a{
+text-decoration:none;
+color:#333;
+margin-left:20px;
+font-size:14px
+}
+
 nav a:hover{color:#b46e5a}
 
-.hero{height:70vh;background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),url('https://images.unsplash.com/photo-1512820790803-83ca734da794');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:20px}
-.hero h1{font-family:'Playfair Display',serif;font-size:42px;margin-bottom:15px}
-.hero p{font-size:18px}
+.hero{
+height:65vh;
+background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+padding:20px
+}
 
-.section{padding:60px 8%;text-align:center}
-.section h2{font-family:'Playfair Display',serif;margin-bottom:30px}
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:42px;
+margin-bottom:15px
+}
 
-.filter-buttons{margin-bottom:30px}
+.section{
+padding:60px 8%;
+text-align:center
+}
+
+.section h2{
+font-family:'Playfair Display',serif;
+margin-bottom:30px
+}
+
+.filter-buttons{
+margin-bottom:30px
+}
+
 .filter-buttons button{
 background:white;
 border:1px solid #ddd;
@@ -32,32 +80,55 @@ margin:5px;
 border-radius:20px;
 cursor:pointer;
 font-size:13px;
-transition:.3s;
+transition:.3s
 }
+
 .filter-buttons button:hover,
 .filter-buttons button.active{
 background:#b46e5a;
 color:white;
-border-color:#b46e5a;
+border-color:#b46e5a
 }
 
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:25px
 }
 
 .card{
 background:white;
-border-radius:18px;
+border-radius:15px;
 overflow:hidden;
 box-shadow:0 8px 20px rgba(0,0,0,.08);
 transition:.3s;
+position:relative
 }
-.card:hover{transform:translateY(-6px)}
-.card img{width:100%;height:280px;object-fit:cover}
-.card-content{padding:15px}
-.card-content h3{font-size:14px;margin-bottom:10px}
+
+.card:hover{
+transform:translateY(-6px)
+}
+
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+transition:.4s
+}
+
+.card:hover img{
+transform:scale(1.05)
+}
+
+.card-content{
+padding:12px
+}
+
+.card-content h3{
+font-size:13px;
+margin-bottom:10px;
+min-height:40px
+}
 
 .btn{
 background:#b46e5a;
@@ -66,7 +137,7 @@ padding:6px 14px;
 border:none;
 border-radius:20px;
 font-size:12px;
-cursor:pointer;
+cursor:pointer
 }
 
 footer{
@@ -74,9 +145,14 @@ padding:30px;
 text-align:center;
 background:white;
 margin-top:40px;
-font-size:13px;
+font-size:13px
 }
-.disclosure{font-size:12px;color:#777;margin-top:8px}
+
+.disclosure{
+font-size:12px;
+color:#777;
+margin-top:8px
+}
 </style>
 </head>
 
@@ -104,15 +180,15 @@ font-size:13px;
 <button class="active" onclick="filterBooks('all')">All</button>
 <button onclick="filterBooks('dark')">Dark Romance</button>
 <button onclick="filterBooks('fantasy')">Fantasy</button>
-<button onclick="filterBooks('reverse')">Reverse Harem</button>
 <button onclick="filterBooks('literary')">Literary</button>
 </div>
 
 <div class="products">
 
-<!-- Dark Romance Example -->
+<!-- DARK ROMANCE -->
+
 <div class="card" data-category="dark">
-<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
+<img src="https://covers.openlibrary.org/b/isbn/9780451486776-L.jpg">
 <div class="card-content">
 <h3>Corrupt — Penelope Douglas</h3>
 <button class="btn">Affiliate Link</button>
@@ -120,16 +196,17 @@ font-size:13px;
 </div>
 
 <div class="card" data-category="dark">
-<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
+<img src="https://covers.openlibrary.org/b/isbn/9781464228699-L.jpg">
 <div class="card-content">
 <h3>God of Malice — Rina Kent</h3>
 <button class="btn">Affiliate Link</button>
 </div>
 </div>
 
-<!-- Fantasy Example -->
+<!-- FANTASY -->
+
 <div class="card" data-category="fantasy">
-<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba">
+<img src="https://covers.openlibrary.org/b/isbn/9781635575569-L.jpg">
 <div class="card-content">
 <h3>ACOTAR — Sarah J. Maas</h3>
 <button class="btn">Affiliate Link</button>
@@ -137,25 +214,17 @@ font-size:13px;
 </div>
 
 <div class="card" data-category="fantasy">
-<img src="https://images.unsplash.com/photo-1519681393784-d120267933ba">
+<img src="https://covers.openlibrary.org/b/isbn/9781649374042-L.jpg">
 <div class="card-content">
 <h3>Fourth Wing — Rebecca Yarros</h3>
 <button class="btn">Affiliate Link</button>
 </div>
 </div>
 
-<!-- Reverse Harem -->
-<div class="card" data-category="reverse">
-<img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93">
-<div class="card-content">
-<h3>Zodiac Academy</h3>
-<button class="btn">Affiliate Link</button>
-</div>
-</div>
+<!-- LITERARY -->
 
-<!-- Literary -->
 <div class="card" data-category="literary">
-<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+<img src="https://covers.openlibrary.org/b/isbn/9780446365385-L.jpg">
 <div class="card-content">
 <h3>If Tomorrow Comes — Sidney Sheldon</h3>
 <button class="btn">Affiliate Link</button>
