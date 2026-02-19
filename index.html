@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hershop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f5f2;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #c97b63;
+        }
+
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), 
+                        url('https://images.unsplash.com/photo-1521334884684-d80222895322');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            background-color: #c97b63;
+            color: white;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 30px;
+        }
+
+        .btn:hover {
+            background-color: #a65f4c;
+        }
+
+        .section {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 50px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #c97b63;
+            font-weight: 500;
+        }
+
+        footer {
+            padding: 40px 8%;
+            text-align: center;
+            background: #fff;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+
+        @media(max-width: 768px) {
+            .hero h1 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">hershop</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>Curated for Her</h1>
+        <p>Minimal. Aesthetic. Effortlessly You.</p>
+        <button class="btn">Shop Now</button>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Featured Collection</h2>
+    <div class="products">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Product 1">
+            <div class="card-content">
+                <h3>Soft Linen Dress</h3>
+                <p class="price">₹2,499</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d" alt="Product 2">
+            <div class="card-content">
+                <h3>Neutral Handbag</h3>
+                <p class="price">₹1,899</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f" alt="Product 3">
+            <div class="card-content">
+                <h3>Minimal Jewelry Set</h3>
+                <p class="price">₹1,299</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 hershop. All rights reserved.
+</footer>
+
+</body>
+</html>
