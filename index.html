@@ -212,6 +212,46 @@ card.style.display=card.dataset.category===category?"block":"none";
 });
 }
 </script>
+<script>
+const books = [
 
+{title:"Corrupt",author:"Penelope Douglas",link:"https://amzn.to/3Oo8uD2",cat:"dark"},
+{title:"Hideaway",author:"Penelope Douglas",link:"https://amzn.to/4aLgMwk",cat:"dark"},
+{title:"Kill Switch",author:"Penelope Douglas",link:"https://amzn.to/3MK6wMC",cat:"dark"},
+{title:"Nightfall",author:"Penelope Douglas",link:"https://amzn.to/4s07KT6",cat:"dark"},
+
+{title:"God of Malice",author:"Rina Kent",link:"https://amzn.to/4rYT4DJ",cat:"dark"},
+{title:"Deviant King",author:"Rina Kent",link:"https://amzn.to/3MvxYOh",cat:"dark"},
+{title:"Beautiful Venom",author:"Rina Kent",link:"https://amzn.to/3ORGasL",cat:"dark"},
+{title:"Kiss the Villain",author:"Rina Kent",link:"https://amzn.to/4qWDeJ2",cat:"dark"},
+{title:"Blood of My Monster",author:"Rina Kent",link:"https://amzn.to/4cnqveP",cat:"dark"},
+
+{title:"A Court of Thorns and Roses",author:"Sarah J. Maas",link:"https://amzn.to/4s60wwZ",cat:"fantasy"},
+{title:"Throne of Glass",author:"Sarah J. Maas",link:"https://amzn.to/4s0jaGf",cat:"fantasy"},
+{title:"A Court of Silver Flames",author:"Sarah J. Maas",link:"https://amzn.to/4qHfYyl",cat:"fantasy"},
+
+{title:"If Tomorrow Comes",author:"Sidney Sheldon",link:"https://amzn.to/4kLAxZf",cat:"literary"},
+{title:"Master of the Game",author:"Sidney Sheldon",link:"https://amzn.to/4cyrRmQ",cat:"literary"},
+{title:"Reckless",author:"Sidney Sheldon",link:"https://amzn.to/4kI3g0S",cat:"literary"}
+
+];
+
+const grid = document.getElementById("bookGrid");
+
+books.forEach(book=>{
+grid.innerHTML += `
+<div class="card" data-category="${book.cat}">
+<a href="${book.link}" target="_blank" style="text-decoration:none;color:inherit;">
+<img src="https://covers.openlibrary.org/b/title/${encodeURIComponent(book.title)}-L.jpg">
+<div class="card-content">
+<h3>${book.title}</h3>
+<p>${book.author}</p>
+<button class="btn">Shop on Amazon</button>
+</div>
+</a>
+</div>
+`;
+});
+</script>
 </body>
 </html>
