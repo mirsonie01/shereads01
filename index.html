@@ -174,8 +174,19 @@ margin-top:8px
 </section>
 
 <section class="section" id="books">
-<h2>Explore Books</h2>
 
+<h2>Explore Books</h2>
+<input type="text" id="searchInput" placeholder="Search books or authors..." onkeyup="searchBooks()" style="
+padding:10px 15px;
+width:100%;
+max-width:400px;
+margin-bottom:20px;
+border-radius:25px;
+border:1px solid #ddd;
+font-size:14px;
+outline:none;
+">
+  
 <div class="filter-buttons">
 <button class="active" onclick="filterBooks('all', this)">All</button>
 <button onclick="filterBooks('dark', this)">Dark Romance</button>
@@ -210,6 +221,39 @@ card.style.display=card.dataset.category===category?"block":"none";
 });
 }
 </script>
+  <script>
+function filterBooks(category, button){
+let cards=document.querySelectorAll(".card");
+let buttons=document.querySelectorAll(".filter-buttons button");
+
+buttons.forEach(btn=>btn.classList.remove("active"));
+button.classList.add("active");
+
+cards.forEach(card=>{
+if(category==="all"){
+card.style.display="block";
+}else{
+card.style.display=card.dataset.category===category?"block":"none";
+}
+});
+}
+
+function searchBooks(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let cards = document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+let title = card.querySelector("h3").innerText.toLowerCase();
+let author = card.querySelector("p").innerText.toLowerCase();
+
+if(title.includes(input) || author.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+  </script>
 <script>
 async function loadBooks() {
   const response = await fetch("https://docs.google.com/spreadsheets/d/1LfkX-Pjyz-jo_gubq1P_8MZDU3VIIqttq0bfnf7hC70/export?format=csv");
