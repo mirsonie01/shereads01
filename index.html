@@ -213,51 +213,34 @@ card.style.display=card.dataset.category===category?"block":"none";
 }
 </script>
 <script>
-const books = [{title:"Corrupt",author:"Penelope Douglas",link:"https://amzn.to/3Oo8uD2",cat:"dark"},
-{title:"Hideaway",author:"Penelope Douglas",link:"https://amzn.to/4aLgMwk",cat:"dark"},
-{title:"Kill Switch",author:"Penelope Douglas",link:"https://amzn.to/3MK6wMC",cat:"dark"},
-{title:"Nightfall",author:"Penelope Douglas",link:"https://amzn.to/4s07KT6",cat:"dark"},
+async function loadBooks() {
+  const response = await fetch("https://docs.google.com/spreadsheets/d/1LfkX-Pjyz-jo_gubq1P_8MZDU3VIIqttq0bfnf7hC70/export?format=csv");
+  const data = await response.text();
 
-{title:"God of Malice",author:"Rina Kent",link:"https://amzn.to/4rYT4DJ",cat:"dark"},
-{title:"Deviant King",author:"Rina Kent",link:"https://amzn.to/3MvxYOh",cat:"dark"},
-{title:"Beautiful Venom",author:"Rina Kent",link:"https://amzn.to/3ORGasL",cat:"dark"},
-{title:"Kiss the Villain",author:"Rina Kent",link:"https://amzn.to/4qWDeJ2",cat:"dark"},
-{title:"Blood of My Monster",author:"Rina Kent",link:"https://amzn.to/4cnqveP",cat:"dark"},
+  const rows = data.trim().split("\n").slice(1);
+  const grid = document.getElementById("bookGrid");
 
-{title:"A Court of Thorns and Roses",author:"Sarah J. Maas",link:"https://amzn.to/4s60wwZ",cat:"fantasy"},
-{title:"Throne of Glass",author:"Sarah J. Maas",link:"https://amzn.to/4s0jaGf",cat:"fantasy"},
-{title:"A Court of Silver Flames",author:"Sarah J. Maas",link:"https://amzn.to/4qHfYyl",cat:"fantasy"},
+  rows.forEach(row => {
+    const [title, author, link, category] = row.split(",");
 
-{title:"Fourth Wing",author:"Rebecca Yarros",link:"https://amzn.to/3OQG9Fu",cat:"fantasy"},
-{title:"Iron Flame",author:"Rebecca Yarros",link:"https://amzn.to/4qWQ8Xu",cat:"fantasy"},
-{title:"Onyx Storm",author:"Rebecca Yarros",link:"https://amzn.to/4rlEkPi",cat:"fantasy"},
+    if (title && author && link && category) {
+      grid.innerHTML += `
+        <div class="card" data-category="${category.trim()}">
+          <a href="${link.trim()}" target="_blank">
+            <img src="https://covers.openlibrary.org/b/title/${encodeURIComponent(title.trim())}-L.jpg">
+            <div class="card-content">
+              <h3>${title.trim()}</h3>
+              <p>${author.trim()}</p>
+              <button class="btn">Shop on Amazon</button>
+            </div>
+          </a>
+        </div>
+      `;
+    }
+  });
+}
 
-{title:"Gild",author:"Raven Kennedy",link:"https://amzn.to/4rV6O29",cat:"fantasy"},
-{title:"Glint",author:"Raven Kennedy",link:"https://amzn.to/4rlDSAA",cat:"fantasy"},
-{title:"Gleam",author:"Raven Kennedy",link:"https://amzn.to/46iqHrJ",cat:"fantasy"},
-{title:"Glow",author:"Raven Kennedy",link:"https://amzn.to/4c3BsC3",cat:"fantasy"},
-{title:"Gold",author:"Raven Kennedy",link:"https://amzn.to/3ZLOqwW",cat:"fantasy"},
-
-{title:"If Tomorrow Comes",author:"Sidney Sheldon",link:"https://amzn.to/4kLAxZf",cat:"literary"},
-{title:"Master of the Game",author:"Sidney Sheldon",link:"https://amzn.to/4cyrRmQ",cat:"literary"},
-{title:"Reckless",author:"Sidney Sheldon",link:"https://amzn.to/4kI3g0S",cat:"literary"}];
-
-const grid = document.getElementById("bookGrid");
-
-books.forEach(book=>{
-grid.innerHTML += `
-<div class="card" data-category="${book.cat}">
-<a href="${book.link}" target="_blank" style="text-decoration:none;color:inherit;">
-<img src="https://covers.openlibrary.org/b/title/${encodeURIComponent(book.title)}-L.jpg">
-<div class="card-content">
-<h3>${book.title}</h3>
-<p>${book.author}</p>
-<button class="btn">Shop on Amazon</button>
-</div>
-</a>
-</div>
-`;
-});
+loadBooks();
 </script>
 </body>
 </html>
