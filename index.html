@@ -177,10 +177,10 @@ margin-top:8px
 <h2>Explore Books</h2>
 
 <div class="filter-buttons">
-<button class="active" onclick="filterBooks('all')">All</button>
-<button onclick="filterBooks('dark')">Dark Romance</button>
-<button onclick="filterBooks('fantasy')">Fantasy</button>
-<button onclick="filterBooks('literary')">Literary</button>
+<button class="active" onclick="filterBooks('all', this)">All</button>
+<button onclick="filterBooks('dark', this)">Dark Romance</button>
+<button onclick="filterBooks('fantasy', this)">Fantasy</button>
+<button onclick="filterBooks('literary', this)">Literary</button>
 </div>
 
 <div class="products" id="bookGrid"></div>
@@ -193,7 +193,6 @@ As an Amazon Associate, I earn from qualifying purchases.
 </div>
 </footer>
 
-<script>
 <script>
 function filterBooks(category, button){
 let cards=document.querySelectorAll(".card");
