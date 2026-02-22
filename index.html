@@ -184,7 +184,6 @@ margin-top:8px
 </div>
 
 <div class="products" id="bookGrid"></div>
-
 </section>
 
 <footer>
@@ -195,12 +194,13 @@ As an Amazon Associate, I earn from qualifying purchases.
 </footer>
 
 <script>
-function filterBooks(category){
+<script>
+function filterBooks(category, button){
 let cards=document.querySelectorAll(".card");
 let buttons=document.querySelectorAll(".filter-buttons button");
 
 buttons.forEach(btn=>btn.classList.remove("active"));
-event.target.classList.add("active");
+button.classList.add("active");
 
 cards.forEach(card=>{
 if(category==="all"){
