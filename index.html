@@ -221,13 +221,17 @@ async function loadBooks() {
   const grid = document.getElementById("bookGrid");
 
   rows.forEach(row => {
-    const [title, author, link, category] = row.split(",");
+    const [title, author, link, category, isbn] = row.split(",");
 
-    if (title && author && link && category) {
+    if (title && author && link && category && isbn) {
+
+      const coverUrl = `https://images-na.ssl-images-amazon.com/images/P/${isbn.trim()}.01.L.jpg`;
+
       grid.innerHTML += `
         <div class="card" data-category="${category.trim()}">
           <a href="${link.trim()}" target="_blank">
-            <img src="https://covers.openlibrary.org/b/title/${encodeURIComponent(title.trim())}-L.jpg">
+            <img src="${coverUrl}" 
+                 onerror="this.src='https://via.placeholder.com/300x450?text=No+Cover';">
             <div class="card-content">
               <h3>${title.trim()}</h3>
               <p>${author.trim()}</p>
@@ -242,5 +246,6 @@ async function loadBooks() {
 
 loadBooks();
 </script>
+
 </body>
 </html>
